@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Eye, Package, Phone, Camera, CheckCircle, AlertCircle } from "lucide-react";
+import { Eye, Package, CheckCircle, AlertCircle } from "lucide-react";
 
 function Services() {
-  const { language } = "en";
+  const { language } = "es";
   const [showPlans, setShowPlans] = useState(false);
 
   const content = {
@@ -143,7 +143,7 @@ function Services() {
     }
   };
 
-  const currentContent = content[language] || content.en;
+  const currentContent = content.es ;
 
   return (
     <div className="container py-5 mt-5">
@@ -229,12 +229,8 @@ function Services() {
           </div>
           <div className="col-lg-6 bg-light d-flex align-items-center justify-content-center p-5">
             <div className="text-center">
-              <div className="mb-4">
-                <Camera size={64} className="text-dark" />
-                <Phone size={48} className="text-dark ms-3" />
-              </div>
               <img 
-                src="/api/placeholder/600/400" 
+                src="/Images/Support.png" 
                 alt="Universal Fundus Camera" 
                 className="img-fluid rounded shadow" 
               />

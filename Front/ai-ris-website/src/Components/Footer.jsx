@@ -1,6 +1,5 @@
 import { Mail, Phone, Instagram, Facebook, Twitter, Linkedin, Globe, Copyright,Github  } from "lucide-react";
 
-
 export function Footer() {
   
   const content = {
@@ -33,7 +32,7 @@ export function Footer() {
     }
   };
 
-  const currentContent = content.en;
+  const currentContent = content.es;
 
   return (
     <footer className="bg-light border-top">

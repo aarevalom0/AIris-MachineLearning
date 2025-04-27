@@ -6,28 +6,28 @@ function Navbar() {
   const content = {
     en: {
       home: "Home",
-      about: "About",
+      model: "About",
       team: "Team",
       contact: "Contact",
       services: "Services"
     },
     es: {
       home: "Inicio",
-      about: "Nosotros",
+      model: "Diagnostico AI-ris",
       team: "Equipo",
       contact: "Contacto",
       services: "Servicios"
     },
     fr: {
       home: "Accueil",
-      about: "À Propos",
+      model: "À Propos",
       team: "Équipe",
       contact: "Contact",
       services: "Services"
     }
   };
 
-  const currentContent =  content.en;
+  const currentContent =  content.es;
   
   return (
     <div className="fixed-top border-bottom bg-light">
@@ -57,8 +57,8 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/about" className="nav-link">
-                  {currentContent.about}
+                <Link to="/model" className="nav-link">
+                  {currentContent.model}
                 </Link>
               </li>
               <li className="nav-item">
