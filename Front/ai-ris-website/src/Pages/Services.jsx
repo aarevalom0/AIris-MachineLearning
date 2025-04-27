@@ -230,7 +230,7 @@ function Services() {
           <div className="col-lg-6 bg-light d-flex align-items-center justify-content-center p-5">
             <div className="text-center">
               <img 
-                src="/Images/Support.png" 
+                src="/Images/support.png" 
                 alt="Universal Fundus Camera" 
                 className="img-fluid rounded shadow" 
               />
