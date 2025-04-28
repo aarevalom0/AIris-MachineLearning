@@ -92,7 +92,7 @@ const translations = {
 
 function Team() {
   const { language } = "es";
-  const t = translations[language] || translations["en"];
+  const t = translations[language] || translations["es"];
 
   const renderIcons = (person) => (
     <div className="d-flex justify-content-center gap-2 mt-2">

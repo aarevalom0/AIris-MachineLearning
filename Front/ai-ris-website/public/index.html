@@ -6,29 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>VitaVision</title>
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <meta name="description" content="VitaVision - AI-Powered Health Assistant" />
+    <meta name="keywords" content="AI, Health, Assistant, Chatbot, Medical, Technology" />
+    <meta name="author" content="Anderson Arevalo https://aarevalom0.github.io/ " />
     <title>React App</title>
   </head>
+  <!-- Ventana emergente básica -->
+<div id="popup-survey" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+background-color: rgba(0, 0, 0, 0.5); z-index: 9999; align-items: center; justify-content: center;">
+<div style="background: white; padding: 20px; border-radius: 8px; text-align: center; max-width: 400px; margin: auto;">
+<h2>Hola 👋</h2>
+<p>Nos encontramos validando la página, ¿nos ayudas diligenciando la siguiente encuesta?</p>
+<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=fAS9-kj_KkmLu4-YufucytGtfDwoxutOi90RTsRs6h9UNTVNVUJOREo2RkdXRlNIQUtUU0xWRkhaQy4u" 
+   target="_blank" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: black; color: white; text-decoration: none; border-radius: 5px;">
+  Ir a la Encuesta
+</a>
+<br /><br />
+<button onclick="document.getElementById('popup-survey').style.display='none'" 
+        style="margin-top: 10px; background: grey; color: white; padding: 8px 16px; border: none; border-radius: 5px;">
+  Cerrar
+</button>
+</div>
+</div>
+
+<script>
+window.onload = function() {
+document.getElementById('popup-survey').style.display = 'flex';
+}
+</script>
+
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    
     <div id="root"></div>
     <script>
       (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="08ntqCoUrdscUvay3CjdE";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
