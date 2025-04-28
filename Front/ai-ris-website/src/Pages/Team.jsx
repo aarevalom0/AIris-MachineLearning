@@ -58,14 +58,34 @@ const integrantes = [
 
 const asesores = [
   {
-    nombre: "Oftalmólogo Gerardo Salamanca",
-    descripcion: "Especialista con 25+ años en diagnóstico y cirugía ocular, director del Instituto Oftalmológico Salamanca.",
-    imagen: "./Images/gerardo.png",
-    linkedin: "",
+    nombre: "Profesora Kelly Garcés",
+    descripcion: "Profesora de la Universidad de los Andes, experta en arquitectura y desarrollo de software",
+    imagen: "./Images/Kelly.png",
+    linkedin: "https://www.linkedin.com/in/garces/",
     github: "",
     instagram: "",
     web: "",
-    email: "gerardo@vitavision.com",
+    email: "kellygarce@gmail.com",
+  },
+  {
+    nombre: "Profesor David Bigio",
+    descripcion: "Profesor de la Universidad de los Andes, experto en innovacion y emprendimiento.",
+    imagen: "./Images/David.jpg",
+    linkedin: "https://www.linkedin.com/in/dbigio/",
+    github: "",
+    instagram: "",
+    web: "http://sp.tri-at.com/david/Welcome.html",
+    email: "dbigio@gmail.com",
+  },
+  {
+    nombre: "Oftalmólogo Gerardo Salamanca",
+    descripcion: "Especialista con 25+ años en diagnóstico y cirugía ocular, director cientifico del Instituto Oftalmológico Salamanca.",
+    imagen: "./Images/gerardo.png",
+    linkedin: "",
+    github: "",
+    instagram: "https://www.instagram.com/dr.gerardosalamanca?igsh=MWJveWZkcWx6YzJzeg%3D%3D",
+    web: "",
+    email: "",
   }
 ];
 
@@ -73,13 +93,13 @@ const translations = {
   es: {
     teamTitle: "Nuestro Equipo",
     teamSubtitle: "Conoce a las personas detrás de VitaVision AI-ris",
-    advisorsTitle: "Asesores Científicos",
+    advisorsTitle: "Asesores",
     membersTitle: "Equipo Principal",
   },
   en: {
     teamTitle: "Our Team",
     teamSubtitle: "Meet the people behind VitaVision AI-ris",
-    advisorsTitle: "Scientific Advisors",
+    advisorsTitle: "Advisors",
     membersTitle: "Core Team",
   },
   fr: {
@@ -133,22 +153,6 @@ function Team() {
         <p className="lead">{t.teamSubtitle}</p>
       </div>
 
-      <h2 className="text-center mb-4">{t.advisorsTitle}</h2>
-      <div className="row justify-content-center mb-5">
-        {asesores.map((asesor, index) => (
-          <div key={index} className="col-md-4 d-flex align-items-stretch mb-4">
-            <div className="card border-0 shadow-sm text-center">
-              <img src={asesor.imagen} className="card-img-top" alt={asesor.nombre} />
-              <div className="card-body">
-                <h5 className="card-title">{asesor.nombre}</h5>
-                <p className="card-text">{asesor.descripcion}</p>
-                {renderIcons(asesor)}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
       <h2 className="text-center mb-4">{t.membersTitle}</h2>
       <div className="row">
         {integrantes.map((integrante, index) => (
@@ -159,6 +163,22 @@ function Team() {
                 <h5 className="card-title">{integrante.nombre}</h5>
                 <p className="card-text">{integrante.descripcion}</p>
                 {renderIcons(integrante)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-center mb-4">{t.advisorsTitle}</h2>
+      <div className="row justify-content-center mb-5">
+        {asesores.map((asesor, index) => (
+          <div key={index} className="col-md-4 d-flex align-items-stretch mb-4">
+            <div className="card border-0 shadow-sm text-center">
+              <img src={asesor.imagen} alt="Miembro" class="img-fluid" style={{width: "100%", height: "100%", objectFit: "cover"}} />
+              <div className="card-body">
+                <h5 className="card-title">{asesor.nombre}</h5>
+                <p className="card-text">{asesor.descripcion}</p>
+                {renderIcons(asesor)}
               </div>
             </div>
           </div>
