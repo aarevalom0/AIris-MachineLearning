@@ -6,7 +6,7 @@ function Navbar() {
   const content = {
     en: {
       home: "Home",
-      model: "About",
+      model: "AI-ris Diagnosis",
       team: "Team",
       contact: "Contact",
       services: "Services"
