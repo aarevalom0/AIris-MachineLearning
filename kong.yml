@@ -1,0 +1,15 @@
+_format_version: "2.1"
+
+services:
+  - name: interfaz_service
+    host: interfaz_upstream
+    protocol: http
+    routes:
+      - name: interfaz
+        paths:
+          - /
+          - /team
+          - /model
+          - /services
+          - /contact
+        strip_path: false

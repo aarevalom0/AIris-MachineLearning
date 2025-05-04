@@ -60,6 +60,9 @@ export function Footer() {
     3: "model",
     4: "/contact"
   };
+  const Mensaje = () => {
+    alert("Ya te encuestras suscrito a nuestro boletín, pronto recibirás novedades.");
+  };
   return (
     
     <footer className="bg-black text-white pt-16 pb-8">
@@ -138,6 +141,7 @@ export function Footer() {
               <button
                 type="submit"
                 className="btn btn btn-light btn-sm"
+                onClick={Mensaje}
               >
                 {currentContent.subscribeButton}
               </button>

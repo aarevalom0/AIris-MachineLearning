@@ -162,7 +162,7 @@ function Services() {
               </div>
               <h3 className="card-title fw-bold">{currentContent.individualDiagnosis.title}</h3>
               <p className="card-text flex-grow-1">{currentContent.individualDiagnosis.description}</p>
-              <button className="btn btn-dark mt-3">{currentContent.individualDiagnosis.button}</button>
+              <a href="/model" class="btn btn-dark mt-3"role="button" aria-disabled="true">Solicitar diagnóstico </a>
             </div>
           </div>
         </div>
@@ -222,9 +222,8 @@ function Services() {
                 ))}
               </ul>
               
-              <button className="btn btn-lg btn-dark mt-4">
-                {currentContent.deviceSection.cta}
-              </button>
+              
+              <a href="/contact" class="btn btn-lg btn-dark mt-4"role="button" aria-disabled="true">Solicitar mas información </a>
             </div>
           </div>
           <div className="col-lg-6 bg-light d-flex align-items-center justify-content-center p-5">

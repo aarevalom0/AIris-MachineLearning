@@ -48,7 +48,10 @@ function Contact() {
       }
     }
   };
-  const currentContent =  content.en;
+  const currentContent =  content.es;
+  const Mensaje = () => {
+    alert("Mensaje Enviado, pronto nos contactaremos contigo");
+  };
   return (
     <div class="container py-5">
       <div class="row g-4">
@@ -80,7 +83,7 @@ function Contact() {
           <div class="card">
             <div class="card-header">
               <h5 class="card-title mb-0">{currentContent.form.name}</h5>
-              <small class="text-muted">Fill out the form below to get in touch with us.</small>
+              <small class="text-muted">Dejanos todos tus datos. En la menor brevedad te contactaremos</small>
             </div>
             <div class="card-body p-4">
               <div class="mb-3">
@@ -92,7 +95,7 @@ function Contact() {
               <div class="mb-3">
                 <textarea class="form-control" rows="4" placeholder={currentContent.form.message}></textarea>
               </div>
-              <button type="button" class="btn btn-dark">{currentContent.form.submit}</button>
+              <button type="button" class="btn btn-dark" onClick={Mensaje}>{currentContent.form.submit}</button>
             </div>
           </div>
         </div>

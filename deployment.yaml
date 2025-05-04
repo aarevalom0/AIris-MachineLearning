@@ -1,0 +1,23 @@
+#
+# Architecture for the deployment of the project AI-ris Machine Learning project to detect Glaucoma.
+# The architecture is based on the following components:
+# Firewalls:
+#  - cbd-services-apps-web
+
+
+
+resources:
+- name: cbd-services-apps-web
+  type: compute.v1.firewall
+  properties:
+    network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    priority: 1000
+    direction: INGRESS
+    sourceRanges: 
+    - 0.0.0.0/0
+    targetTags:
+    - cbd-services-firewall
+    allowed:
+    - IPProtocol: TCP
+      ports: 
+      - 8080

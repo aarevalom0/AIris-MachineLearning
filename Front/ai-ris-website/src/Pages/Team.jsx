@@ -7,7 +7,7 @@ const integrantes = [
   {
     nombre: "Ing. Valentina Salamanca",
     descripcion: "Creativa y proactiva, con fuerte compromiso hacia el trabajo en equipo e innovación.",
-    imagen: "/Images/VS.png",
+    imagen: "./Images/VS.png",
     linkedin: "http://linkedin.com/in/valentina-salamanca-bautista-072214320",
     github: "",
     instagram: "",
@@ -17,7 +17,7 @@ const integrantes = [
   {
     nombre: "Ing. Anderson Arevalo",
     descripcion: "Arquitecto del modelo IA y responsable del desarrollo web y despliegue en la nube.",
-    imagen: "/Images/AAM.jpeg",
+    imagen: "./Images/AAM.jpeg",
     linkedin: "https://www.linkedin.com/in/aarevalom/",
     github: "https://github.com/aarevalom0",
     instagram: "https://www.instagram.com/a.arevalom01/",
@@ -27,7 +27,7 @@ const integrantes = [
   {
     nombre: "Ing. Sara Sanchez",
     descripcion: "Apoyo en diseño y desarrollo de modelos 3D para el dispositivo.",
-    imagen: "/Images/Sara.png",
+    imagen: "./Images/Sara.png",
     linkedin: "https://www.linkedin.com/in/sj-sanchezf",
     github: "",
     instagram: "",
@@ -37,7 +37,7 @@ const integrantes = [
   {
     nombre: "Ing. Maria del Mar Urrea",
     descripcion: "Creativa y comprometida en el diseño de prototipos de impacto positivo.",
-    imagen: "/Images/Maria.png",
+    imagen: "./Images/Maria.png",
     linkedin: "",
     github: "",
     instagram: "",
@@ -47,7 +47,7 @@ const integrantes = [
   {
     nombre: "Ing. Sebastian Melo",
     descripcion: "Enfocado en diseño de dispositivo y construcción de prototipos funcionales.",
-    imagen: "/Images/Sebastian.png",
+    imagen: "./Images/Sebastian.png",
     linkedin: "",
     github: "",
     instagram: "",
