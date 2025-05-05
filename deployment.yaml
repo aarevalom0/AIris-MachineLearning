@@ -1,13 +1,18 @@
+# ***************** AIris-MachineLearning Project ***********************
+# ****** Backend Deployment Configuration for FastAPI Application ******
 #
-# Architecture for the deployment of the project AI-ris Machine Learning project to detect Glaucoma.
-# The architecture is based on the following components:
-# Firewalls:
-#  - cbd-services-apps-web
-
-
+# Backend deployment for AIris REST API (FastAPI application)
+# Elements to deploy:
+# 1. Firewall:
+#    - airis-backend-firewall
+#    - airis-frontend-firewall
+# 2. Instance:
+#    - airis-api-instance
+#    - airis-api-instance
 
 resources:
-- name: cbd-services-apps-web
+# Firewall rule for frontend
+- name: airis-frontend-firewall
   type: compute.v1.firewall
   properties:
     network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
@@ -16,8 +21,174 @@ resources:
     sourceRanges: 
     - 0.0.0.0/0
     targetTags:
-    - cbd-services-firewall
+    - airis-frontend
     allowed:
     - IPProtocol: TCP
       ports: 
-      - 8080
+      - 80
+      - 443
+      - 3000
+# Firewall rule for backend
+- name: airis-backend-firewall
+  type: compute.v1.firewall
+  properties:
+    network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    priority: 1000
+    direction: INGRESS
+    sourceTags: 
+    - airis-frontend
+    targetTags:
+    - airis-backend
+    allowed:
+    - IPProtocol: TCP
+      ports: 
+      - 8000 
+
+# React Frontend instance
+- type: compute.v1.instance
+  name: airis-web-instance
+  properties:
+    zone: us-central1-a
+    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-medium
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+    tags:
+      items: 
+      - airis-frontend
+    metadata:
+      items:
+      - key: startup-script
+        value: |
+          #!/bin/bash
+          # Update system
+          sudo apt-get update
+          sudo apt-get install -y git curl
+
+          # Install Node.js and npm
+          curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+
+          # Clone repository
+          cd /home/ubuntu
+          git clone https://github.com/aarevalom0/AIris-MachineLearning.git
+          cd AIris-MachineLearning/ai-ris-website/
+
+          # Install dependencies
+          npm install
+
+          # Build React app for production
+          npm run build
+
+          # Install serve to host the built app
+          sudo npm install -g serve
+
+          # Create a service to run the React app
+          cat > /etc/systemd/system/airis-frontend.service << EOF
+          [Unit]
+          Description=AIris Frontend Service
+          After=network.target
+
+          [Service]
+          Type=simple
+          User=root
+          WorkingDirectory=/home/ubuntu/AIris-MachineLearning/ai-ris-website
+          ExecStart=/usr/bin/serve -s build -l 3000
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+          EOF
+
+          # Enable and start the service
+          sudo systemctl enable airis-frontend
+          sudo systemctl start airis-frontend
+          
+          # Install Nginx as reverse proxy
+          sudo apt install -y nginx
+
+          # Configure Nginx
+          cat > /etc/nginx/sites-available/default << EOF
+          server {
+              listen 80;
+              
+              location / {
+                  proxy_pass http://localhost:3000;
+                  proxy_http_version 1.1;
+                  proxy_set_header Upgrade \$http_upgrade;
+                  proxy_set_header Connection 'upgrade';
+                  proxy_set_header Host \$host;
+                  proxy_cache_bypass \$http_upgrade;
+              }
+          }
+          EOF
+
+          # Restart Nginx
+
+# Backend instance
+- type: compute.v1.instance
+  name: airis-api-instance
+  properties:
+    zone: us-central1-a
+    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-medium
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      networkIP: 10.128.0.60  # Fixed internal IP
+    tags:
+      items: 
+      - airis-backend
+    metadata:
+      items:
+      - key: startup-script
+        value: |
+          #!/bin/bash
+          # Update system
+          sudo apt-get update
+          sudo apt-get install -y git python3-pip python3-dev build-essential libgl1-mesa-glx
+
+          # Clone repository
+          cd /home/ubuntu
+          git clone https://github.com/aarevalom0/AIris-MachineLearning.git
+          cd AIris-MachineLearning/Backend/
+
+          # Install Python dependencies
+          pip3 install fastapi uvicorn
+          pip3 install numpy scikit-image scikit-learn opencv-python-headless joblib
+          pip3 install -r requirements.txt  # If requirements.txt exists
+
+          # Create a service file for FastAPI backend
+          cat > /etc/systemd/system/airis-backend.service << EOF
+          [Unit]
+          Description=AIris Backend Service
+          After=network.target
+
+          [Service]
+          Type=simple
+          User=root
+          WorkingDirectory=/home/ubuntu/AIris-MachineLearning/Backend
+          ExecStart=/usr/bin/python3 -m uvicorn main:app --host 0.0.0.0 --port 8000
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+          EOF
+
+          # Enable and start the service
+          sudo systemctl enable airis-backend
+          sudo systemctl start airis-backend

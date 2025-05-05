@@ -22,7 +22,7 @@ const Home = () => {
       impact: {
         title: "Our Impact",
         stats: [
-          { number: "98%", label: "Accuracy Rate" },
+          { number: "85%", label: "Accuracy Rate" },
           { number: "10k+", label: "Screenings Performed" },
           { number: "24/7", label: "Available Support" }
         ]
@@ -45,8 +45,8 @@ const Home = () => {
       impact: {
         title: "Nuestro Impacto",
         stats: [
-          { number: "98%", label: "Tasa de Precisión" },
-          { number: "10k+", label: "Exámenes Realizados" },
+          { number: "85%", label: "Tasa de Precisión" },
+          { number: "1", label: "Países Alcanzados" },
           { number: "24/7", label: "Soporte Disponible" }
         ]
       }

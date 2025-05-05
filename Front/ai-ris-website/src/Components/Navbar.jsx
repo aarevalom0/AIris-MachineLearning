@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
-
+import { useState } from "react"; // Importamos useState para manejar el estado del menú
 
 function Navbar() {
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true); // Estado para controlar si el menú está colapsado
+  
+  // Función para manejar el clic en el botón toggler
+  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
   
   const content = {
     en: {
@@ -27,7 +31,7 @@ function Navbar() {
     }
   };
 
-  const currentContent =  content.es;
+  const currentContent = content.es;
   
   return (
     <div className="fixed-top border-bottom bg-light">
@@ -43,36 +47,38 @@ function Navbar() {
             data-bs-toggle="collapse" 
             data-bs-target="#navbarNav" 
             aria-controls="navbarNav" 
-            aria-expanded="false" 
+            aria-expanded={!isNavCollapsed ? true : false} 
             aria-label="Toggle navigation"
+            onClick={handleNavCollapse}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
           
-          <div className="collapse navbar-collapse" id="navbarNav">
+    
+          <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to="/" className="nav-link" onClick={() => setIsNavCollapsed(true)}>
                   {currentContent.home}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/model" className="nav-link">
+                <Link to="/model" className="nav-link" onClick={() => setIsNavCollapsed(true)}>
                   {currentContent.model}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/team" className="nav-link">
+                <Link to="/team" className="nav-link" onClick={() => setIsNavCollapsed(true)}>
                   {currentContent.team}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/services" className="nav-link">
+                <Link to="/services" className="nav-link" onClick={() => setIsNavCollapsed(true)}>
                   {currentContent.services}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/contact" className="nav-link">
+                <Link to="/contact" className="nav-link" onClick={() => setIsNavCollapsed(true)}>
                   {currentContent.contact}
                 </Link>
               </li>
@@ -83,7 +89,5 @@ function Navbar() {
     </div>
   );
 }
-
-
 
 export default Navbar;
