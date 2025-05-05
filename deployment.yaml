@@ -44,6 +44,17 @@ resources:
       ports: 
       - 8000 
 
+# Router y NAT
+- name: cbd-router
+  type: compute.v1.router
+  properties:
+    region: us-central1
+    network: https://www.googleapis.com/compute/v1/projects/finalproject-457723/global/networks/default
+    nats:
+    - name: cbd-nat
+      natIpAllocateOption: AUTO_ONLY
+      sourceSubnetworkIpRangesToNat: ALL_SUBNETWORKS_ALL_IP_RANGES
+      
 # React Frontend instance
 - type: compute.v1.instance
   name: airis-web-instance
@@ -81,7 +92,7 @@ resources:
           # Clone repository
           cd /home/ubuntu
           git clone https://github.com/aarevalom0/AIris-MachineLearning.git
-          cd AIris-MachineLearning/ai-ris-website/
+          cd AIris-MachineLearning/Front/ai-ris-website/
 
           # Install dependencies
           npm install
