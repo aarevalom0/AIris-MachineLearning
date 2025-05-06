@@ -66,9 +66,9 @@ function Services() {
         hideButton: "Ocultar planes"
       },
       deviceSection: {
-        title: "Adaptador Universal para Cámara de Fondo",
+        title: "Adaptador Universal para Cámara de Fondo del ojo",
         subtitle: "Transforma tu smartphone en una poderosa herramienta de diagnóstico",
-        description: "Nuestro dispositivo de soporte universal para teléfonos móviles permite la captura de imágenes retinianas de alta calidad usando cualquier smartphone. Perfecto para telemedicina y diagnóstico remoto en áreas con acceso limitado a equipos especializados.",
+        description: "Nuestro dispositivo de soporte universal para teléfonos móviles permite la captura de imágenes del fondo del ojo de alta calidad usando cualquier smartphone. Perfecto para telemedicina y diagnóstico remoto en áreas con acceso limitado a equipos especializados.",
         features: [
           "Compatible con la mayoría de modelos de smartphones",
           "Fácil de usar con entrenamiento mínimo",
@@ -212,7 +212,7 @@ function Services() {
               <p className="lead mb-4">{currentContent.deviceSection.subtitle}</p>
               <p className="mb-4">{currentContent.deviceSection.description}</p>
               
-              <h5 className="fw-bold mb-3">Key Features:</h5>
+              <h5 className="fw-bold mb-3">Caracteristicas principales:</h5>
               <ul className="list-unstyled">
                 {currentContent.deviceSection.features.map((feature, index) => (
                   <li key={index} className="d-flex align-items-center mb-2">
@@ -223,7 +223,7 @@ function Services() {
               </ul>
               
               
-              <a href="/contact" class="btn btn-lg btn-dark mt-4"role="button" aria-disabled="true">Solicitar mas información </a>
+              <a href="/tutorial" class="btn btn-lg btn-dark mt-4"role="button" aria-disabled="true">Solicitar mas información </a>
             </div>
           </div>
           <div className="col-lg-6 bg-light d-flex align-items-center justify-content-center p-5">
@@ -233,7 +233,7 @@ function Services() {
                 alt="Universal Fundus Camera" 
                 className="img-fluid rounded shadow" 
               />
-              <p className="mt-3 text-muted fst-italic">Universal smartphone adapter for fundus imaging</p>
+              
             </div>
           </div>
         </div>
@@ -246,8 +246,8 @@ function Services() {
             <AlertCircle size={24} className="text-dark" />
           </div>
           <div>
-            <h5 className="fw-bold">Early detection is crucial</h5>
-            <p className="mb-0">Glaucoma is often called the "silent thief of sight" because it can develop without noticeable symptoms until significant vision loss has occurred. Our advanced diagnostic tools help detect early signs, increasing treatment success rates.</p>
+            <h5 className="fw-bold">La detección temprana es crucial</h5>
+            <p className="mb-0">El glaucoma se conoce a menudo como el "ladrón silencioso de la vista" porque puede desarrollarse sin síntomas perceptibles hasta que se produce una pérdida significativa de la visión. Nuestras herramientas de diagnóstico avanzadas ayudan a detectar signos tempranos, lo que aumenta las tasas de éxito del tratamiento.</p>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ const integrantes = [
   {
     nombre: "Ing. Valentina Salamanca",
     descripcion: "Creativa y proactiva, con fuerte compromiso hacia el trabajo en equipo e innovación.",
-    imagen: "./Images/VS.png",
+    imagen: "/Images/VS.png",
     linkedin: "http://linkedin.com/in/valentina-salamanca-bautista-072214320",
     github: "",
     instagram: "",

@@ -68,6 +68,11 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link to="/tutorial" className="nav-link" onClick={() => setIsNavCollapsed(true)}>
+                  Tutorial
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link to="/team" className="nav-link" onClick={() => setIsNavCollapsed(true)}>
                   {currentContent.team}
                 </Link>

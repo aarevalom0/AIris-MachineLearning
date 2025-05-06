@@ -174,7 +174,7 @@ resources:
           sudo apt-get install -y git python3-pip python3-dev build-essential libgl1-mesa-glx
 
           # Clone repository
-          cd /home/ubuntu
+          cd /home/ubuntu/AIris-MachineLearning/Backend/
           git clone https://github.com/aarevalom0/AIris-MachineLearning.git
           cd AIris-MachineLearning/Backend/
 
@@ -193,7 +193,7 @@ resources:
           Type=simple
           User=root
           WorkingDirectory=/home/ubuntu/AIris-MachineLearning/Backend
-          ExecStart=/usr/bin/python3 -m uvicorn main:app --host 0.0.0.0 --port 8000
+          ExecStart=/usr/bin/python3 -m uvicorn APIRest:app --host 0.0.0.0 --port 8000
           Restart=always
 
           [Install]
