@@ -104,7 +104,7 @@ function Model() {
     reader.onloadend = async () => {
         
         try {
-            await axios.post('http://34.30.194.67:8000/upload', formData);
+            await axios.post('http://35.232.127.177:8000/upload', formData);
             console.log("Imagen subida con éxito:", file.name);
         } catch (error) {
             console.error("Error subiendo la imagen:", error);
@@ -127,7 +127,7 @@ function Model() {
     console.log("Solicitando predicción para:", nameImage);
 
     try {
-        const response = await axios.get(`http://34.30.194.67:8000/predecir/${nameImage}`);
+        const response = await axios.get(`http://35.232.127.177:8000/predecir/${nameImage}`);
         console.log("Respuesta de la API:", response.data);
 
         let data = response.data;
