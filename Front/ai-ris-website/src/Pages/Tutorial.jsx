@@ -5,7 +5,7 @@ function Tutorial() {
             <div className="text-center">
 
               <br></br>
-              <h1 className="display-3 fw-bold mb-4">Tutorial para adaptador universal para captura de imagenes del fondo del ojo</h1>
+              <h1 className="display-3 fw-bold mb-4">Tutorial para adaptador universal para captura de imágenes del fondo del ojo</h1>
               <img 
                 src="/Images/Tutorial.jpeg" 
                 alt="Tutorial"

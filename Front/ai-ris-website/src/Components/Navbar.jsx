@@ -17,7 +17,7 @@ function Navbar() {
     },
     es: {
       home: "Inicio",
-      model: "Diagnostico AI-ris",
+      model: "Diagnóstico AI-ris",
       team: "Equipo",
       contact: "Contacto",
       services: "Servicios"
