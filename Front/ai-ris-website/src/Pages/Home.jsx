@@ -98,7 +98,7 @@ const Home = () => {
           <p className="lead mb-5">{currentContent.about.content}</p>
           <div className="row">
             {currentContent.impact.stats.map((stat, index) => (
-              <div className="col-12 col-md-4 mb-4" key={index}>
+              <div className="col" key={index}>
                 <h3 className="fw-bold">{stat.number}</h3>
                 <p className="text-secondary">{stat.label}</p>
               </div>

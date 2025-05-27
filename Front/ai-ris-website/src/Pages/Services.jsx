@@ -217,6 +217,7 @@ function Services() {
               </ul>
               
               <div className="badge bg-dark text-white p-2 fs-5">$360,000</div>
+              <br />
               <a href="/tutorial" class="btn btn-lg btn-dark mt-4"role="button" aria-disabled="true">Solicitar mas información </a>
             </div>
           </div>
