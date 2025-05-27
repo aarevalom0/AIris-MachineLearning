@@ -45,7 +45,6 @@ const Home = () => {
       impact: {
         title: "Nuestro Impacto",
         stats: [
-          { number: "80%", label: "Tasa de Precisión" },
           { number: "1", label: "Países Alcanzados" },
           { number: "24/7", label: "Soporte Disponible" }
         ]

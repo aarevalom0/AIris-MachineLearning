@@ -56,12 +56,12 @@ function Services() {
       subtitle: "Ofrecemos soluciones tecnológicas para el diagnóstico temprano del glaucoma y otras condiciones oculares",
       individualDiagnosis: {
         title: "Diagnóstico Individual",
-        description: "Obtén un diagnóstico preciso por solo $5.000. Ideal para usuarios individuales que desean saber si presentan signos de glaucoma.",
+        description: "Obtén un diagnóstico preciso por solo $9.000. Ideal para usuarios individuales que desean saber si presentan signos de glaucoma.",
         button: "Solicitar diagnóstico"
       },
       diagnosisPacks: {
         title: "Paquetes de diagnósticos",
-        description: "Accede a planes por volumen para centros de salud. Tarifas preferenciales desde $4.800 por diagnóstico.",
+        description: "Accede a planes por volumen para centros de salud. Tarifas preferenciales por diagnóstico próximamente disponibles.",
         button: "Ver planes disponibles",
         hideButton: "Ocultar planes"
       },
@@ -175,12 +175,6 @@ function Services() {
               </div>
               <h3 className="card-title fw-bold">{currentContent.diagnosisPacks.title}</h3>
               <p className="card-text flex-grow-1">{currentContent.diagnosisPacks.description}</p>
-              <button 
-                className="btn btn-outline-dark mt-3" 
-                onClick={() => setShowPlans(!showPlans)}
-              >
-                {showPlans ? currentContent.diagnosisPacks.hideButton : currentContent.diagnosisPacks.button}
-              </button>
             </div>
           </div>
         </div>
@@ -222,7 +216,7 @@ function Services() {
                 ))}
               </ul>
               
-              
+              <div className="badge bg-dark text-white p-2 fs-5">$360,000</div>
               <a href="/tutorial" class="btn btn-lg btn-dark mt-4"role="button" aria-disabled="true">Solicitar mas información </a>
             </div>
           </div>
