@@ -5,6 +5,7 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
 
 import AIris
+import Filtro
 
 app = FastAPI()
 app.add_middleware(
@@ -18,6 +19,9 @@ app.add_middleware(
 def predecir(path):
    path = "./Data/" + path
    model = AIris.AIrisModel()
+   filtro= Filtro.Filtro()
+   if filtro.filtrar(path) == 0:
+       return JSONResponse(content={"error": "La imagen no es válida"}, status_code=400)
    predicciones=model.make_prediction(path)
    return predicciones
 
