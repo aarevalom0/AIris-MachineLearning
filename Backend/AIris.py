@@ -73,7 +73,7 @@ class AIrisModel:
         descriptor=self.color_shape(image,10,"concat",True,(16,16))
         predicion=self.model.predict([descriptor])[0]
         if predicion==0:
-            Recomendacion=" ⚠️ No se han detectado signos de glaucoma. Recuerda que los exámenes periódicos son clave para la prevención."
+            Recomendacion="No se han detectado signos de glaucoma. Recuerda que los exámenes periódicos son clave para la prevención."
         else:
-            Recomendacion=" ✅ Los resultados sugieren la posibilidad de glaucoma. Te recomendamos consultar a un especialista para una evaluación más detallada."
+            Recomendacion="Los resultados sugieren la posibilidad de glaucoma. Te recomendamos consultar a un especialista para una evaluación más detallada."
         return {"Recomendacion":Recomendacion,"Probabilidad":str(round(self.model.predict_proba([descriptor])[0][predicion]*100,2))+"%"}
