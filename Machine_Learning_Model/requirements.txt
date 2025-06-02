@@ -1,0 +1,8 @@
+scikit-image
+opencv-python
+joblib
+scikit-learn
+torch
+torchvision
+kaggle
+pillow

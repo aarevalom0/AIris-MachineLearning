@@ -9,11 +9,7 @@ class AIrisModel:
     def __init__(self):
         self.model=load("./assets/modelo.joblib")
     def color_hist(self,Im,type_h,bins):
-        'Im (ndarray): Imagen de entrada'
-        'type_h (str): Puede ser "concat" o "joint"'
-        'bins (int): Cantidad de bins que usar en el histograma'
-        # YOUR CODE HERE
-
+        
         if type_h=="concat":
 
             R=Im[:,:,0].flatten()
@@ -31,7 +27,6 @@ class AIrisModel:
             intensities = np.stack([Im[:, :, 0].flatten(),
                                 Im[:, :, 1].flatten(),
                                 Im[:, :, 2].flatten()], axis=1)
-            # Se obtiene el histograma conjunto y la intersección de rangos asociada a cada bin
             joint_histogram, bins_grid = np.histogramdd(intensities, bins = bins)
             joint_histogram=joint_histogram.flatten()
             joint_histogram=joint_histogram/np.sum(joint_histogram)
@@ -40,12 +35,6 @@ class AIrisModel:
 
 
     def Color_pyramid(self,Im,size,type_h,bins):
-        'Im (ndarray): Imagen de entrada'
-        'size (tuple): Tupla tamaño de los parches sobre el que calcular cada histograma'
-        'type_h (str): Puede ser "concat" o "joint"'
-        'bins (int): Cantidad de bins que usar en el histograma'
-        # YOUR CODE HERE
-
         filas=size[0]
         columnas=size[0]
         h=[]
@@ -60,12 +49,6 @@ class AIrisModel:
         return H
 
     def color_shape(self,Im,bins,type_h,pyram,cell_size):
-        'Im (ndarray): Imagen a color'
-        'bins (int): Cantidad de bins del histograma de color'
-        'type_h (str): Tipo de histograma, puede ser "concat" o  "joint" '
-        'pyram (bool): Indica si el histograma de color será en piramide'
-        'cell_size (tuple): Tamaño de la celda'
-        # YOUR CODE HERE
 
         if pyram:
             d_color = self.Color_pyramid(Im,cell_size,type_h,bins)

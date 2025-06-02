@@ -1,3 +1,8 @@
+<div style="display: flex; align-items: center;">
+<img src="../Images/header-F.png" alt="header">
+</div>
+### 
+
 # AIRIS - Frontend
 
 This is the **frontend application** for AIRIS, built using **React.js**. It provides a modern, user-friendly interface for users to interact with the backend services and machine learning predictions.

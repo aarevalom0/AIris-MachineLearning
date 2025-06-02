@@ -21,7 +21,7 @@ def predecir(path):
    model = AIris.AIrisModel()
    filtro= Filtro.Filtro()
    if filtro.filtrar(path) == 0:
-       return JSONResponse(content={"error": "La imagen no es válida"}, status_code=400)
+       return {"Recomendacion":"imagen NO ADECUADA para diagnóstico de glaucoma","Probabilidad":"NO ADECUADO"}
    predicciones=model.make_prediction(path)
    return predicciones
 
