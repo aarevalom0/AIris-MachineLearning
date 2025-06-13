@@ -60,6 +60,7 @@ The architecture includes a frontend application built with React.js, a backend 
 - Documentation for easy understanding and usage
 - Robust backend for handling requests and processing data
 - Scalable architecture for future enhancements
+- Easy deployment and integration with cloud services.
 
 ---
 ## Installation and Usage
