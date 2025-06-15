@@ -28,6 +28,50 @@
   color: #61dafb;
 }
 
+.card-members {
+  flex:1 350px;
+  padding:2px 2px 2px 2px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card-members img {
+  width: 325px;
+  height: 375px;
+  object-fit: fill;
+  object-position: center;
+  border-radius: 20px;
+}
+
+.card-members-title {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.card-members p {
+  margin: 0;
+  padding: 0;
+  width: 350px;
+}
+
+.seccion-2 {
+  background-color: #d3d3d3;
+}
+.img-1 {
+  width: 100px;
+
+}
+.video {
+  border-radius: 0.5rem;
+  width: 80%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -16,7 +16,7 @@ const integrantes = [
   },
   {
     nombre: "Ing. Anderson Arevalo",
-    descripcion: "Arquitecto del modelo IA y responsable del desarrollo web y despliegue en la nube.",
+    descripcion: "Arquitecto de software en la nube, especializado en soluciones de inteligencia artificial y machine learning.",
     imagen: "./Images/AAM.jpeg",
     linkedin: "https://www.linkedin.com/in/aarevalom/",
     github: "https://github.com/aarevalom0",
@@ -56,7 +56,16 @@ const integrantes = [
   },
 ];
 
-const asesores = [
+const asesores = [{
+    nombre: "Profesor David Bigio",
+    descripcion: "Profesor de la Universidad de los Andes, experto en innovacion y emprendimiento.",
+    imagen: "./Images/David.jpg",
+    linkedin: "https://www.linkedin.com/in/dbigio/",
+    github: "",
+    instagram: "",
+    web: "http://sp.tri-at.com/david/Welcome.html",
+    email: "dbigio@gmail.com",
+  },
   {
     nombre: "Profesora Kelly Garcés",
     descripcion: "Profesora de la Universidad de los Andes, experta en arquitectura y desarrollo de software",
@@ -67,16 +76,7 @@ const asesores = [
     web: "",
     email: "kellygarce@gmail.com",
   },
-  {
-    nombre: "Profesor David Bigio",
-    descripcion: "Profesor de la Universidad de los Andes, experto en innovacion y emprendimiento.",
-    imagen: "./Images/David.jpg",
-    linkedin: "https://www.linkedin.com/in/dbigio/",
-    github: "",
-    instagram: "",
-    web: "http://sp.tri-at.com/david/Welcome.html",
-    email: "dbigio@gmail.com",
-  },
+  
   {
     nombre: "Oftalmólogo Gerardo Salamanca",
     descripcion: "Especialista con 25+ años en diagnóstico y cirugía ocular, director cientifico del Instituto Oftalmológico Salamanca.",
@@ -147,43 +147,60 @@ function Team() {
   );
 
   return (
-    <div className="container py-5">
-      <div className="text-center mb-5">
-        <h1 className="display-4">{t.teamTitle}</h1>
-        <p className="lead">{t.teamSubtitle}</p>
-      </div>
+      <div>
 
+      <section className="bg-dark text-white py-5">
+        <div className="text-center mb-5">
+          <h1 className="display-4">{t.teamTitle}</h1>
+          <br />
+          <hr className="my-4" />
+          <br />
+          <p className="lead">{t.teamSubtitle}</p>
+        </div>
+      </section>
+
+    
+      <section className="d-flex flex-column justify-content-center align-items-center min-vh-100 text-center px-3">
+      <br />
       <h2 className="text-center mb-4">{t.membersTitle}</h2>
       <div className="row">
+        <div  className="d-flex flex-wrap mb-4">
         {integrantes.map((integrante, index) => (
-          <div key={index} className="col-md-4 d-flex align-items-stretch mb-4">
-            <div className="card border-0 shadow-sm text-center">
-              <img src={integrante.imagen} alt="Miembro" class="img-fluid" style={{width: "100%", height: "100%", objectFit: "cover"}} />
+          
+            <div className="card-members">
+              <img src={integrante.imagen} alt="Miembro" class="img-fluid"  />
               <div className="card-body">
-                <h5 className="card-title">{integrante.nombre}</h5>
-                <p className="card-text">{integrante.descripcion}</p>
+                <h5 className="card-members-title">{integrante.nombre}</h5>
+                <p >{integrante.descripcion}</p>
                 {renderIcons(integrante)}
               </div>
             </div>
-          </div>
+          
         ))}
+        </div>
       </div>
+      </section>
 
+    <section className="d-flex flex-column justify-content-center align-items-center min-vh-100 text-center px-3 seccion-2">
+      <br />
       <h2 className="text-center mb-4">{t.advisorsTitle}</h2>
-      <div className="row justify-content-center mb-5">
-        {asesores.map((asesor, index) => (
-          <div key={index} className="col-md-4 d-flex align-items-stretch mb-4">
-            <div className="card border-0 shadow-sm text-center">
-              <img src={asesor.imagen} alt="Miembro" class="img-fluid" style={{width: "100%", height: "100%", objectFit: "cover"}} />
+      <div className="row">
+        <div  className="d-flex flex-wrap mb-4">
+          {asesores.map((asesor, index) => (
+              <div className="card-members">
+                <img src={asesor.imagen} alt="Miembro" class="img-fluid" />
               <div className="card-body">
-                <h5 className="card-title">{asesor.nombre}</h5>
-                <p className="card-text">{asesor.descripcion}</p>
+                <h5 className="card-members-title">{asesor.nombre}</h5>
+                <p >{asesor.descripcion}</p>
                 {renderIcons(asesor)}
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+    </section>
+
+    
     </div>
   );
 }

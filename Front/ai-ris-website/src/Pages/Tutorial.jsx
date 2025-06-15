@@ -1,7 +1,24 @@
 
 function Tutorial() {
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center min-vh-100 text-center px-3">
+    <div>
+
+      <section className="bg-dark text-white py-5">
+        <div className="text-center mb-5">
+          <h1 className="display-4">Tutorial para adaptador universal para captura de imágenes del fondo del ojo</h1>
+          <br />
+          <p className="lead">Aprende a utilizar nuestro adaptador universal para capturar imágenes del fondo del ojo de manera efectiva.</p>
+          <br />
+          <img 
+            src="/Images/Logo1.png" 
+            alt="VitaVision AI-ris"
+            className="img-1"
+          />
+          <h2 className="text-center mb-4">VitaVision AI-ris</h2>
+        </div>
+
+      </section>
+    
             <div className="text-center">
 
               <br></br>
@@ -11,10 +28,11 @@ function Tutorial() {
                 alt="Tutorial"
                 className="img-fluid rounded shadow" 
               />
-              <br></br>
-              <br></br>
+
+              
             </div>
-          </div>
+          
+    </div>
   );
 }
 

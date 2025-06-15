@@ -1,6 +1,8 @@
 {
   "name": "ai-ris-website",
   "version": "0.1.0",
+  "description": "AI RIS Website",
+  "homepage": "https://aarevalom0.github.io/AIris-MachineLearning",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",

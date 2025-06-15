@@ -90,6 +90,20 @@ const Home = () => {
         </a>
         
       </section>
+            {/* Pitch section */}
+      <section className="d-flex flex-column justify-content-center align-items-center min-vh-100 text-center seccion-2">
+        <br />
+        <h2 className="display-6 fw-bold mb-3">Potencia tu Diagnóstico con AI-RIS</h2>
+        <p className="lead text-muted mb-5">Descubre cómo nuestra tecnología puede mejorar la precisión y eficiencia en el diagnóstico del glaucoma.
+          <iframe 
+            src="https://www.youtube.com/embed/8QwFK0Tb33Q?autoplay=1&mute=0" 
+            title="YouTube video player"
+            className="video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe></p>
+          <br />
+      </section>
 
       {/* About Section */}
       <section className="bg-dark text-white py-5">
@@ -127,8 +141,24 @@ const Home = () => {
           </div>
         </div>
       </section>
+      
+      {/* Call to Action Section */}
+      <section className="seccion-2 py-5">
+        <div className="container text-center">
+          <h2 className="display-6 fw-bold mb-4">Unete al Futuro del Cuidado Ocular</h2>
+          <p className="lead mb-5">Experimenta el poder de la IA en la detección del glaucoma. Comienza tu viaje con VitaVision hoy.</p>
+          <a href="/model" class="btn btn-dark btn-lg align-items-center"role="button" aria-disabled="true">
+            {currentContent.hero.cta}
+          <ArrowRight className="ms-2" size={20} />
+        </a>
+        </div>
+      </section>
+
+
+
     </div>
   );
+
 };
 
 const features = [
