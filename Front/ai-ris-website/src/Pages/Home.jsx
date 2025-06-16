@@ -88,7 +88,14 @@ const Home = () => {
             {currentContent.hero.cta}
           <ArrowRight className="ms-2" size={20} />
         </a>
-        
+        <br />
+        <img 
+            src={`${process.env.PUBLIC_URL}/Images/LogoBlack1.png`} 
+            alt="VitaVision AI-RIS"
+            className="img-1"
+          />
+          <h2 className="text-center mb-4">VitaVision AI-RIS</h2>
+    
       </section>
             {/* Pitch section */}
       <section className="d-flex flex-column justify-content-center align-items-center min-vh-100 text-center seccion-2">

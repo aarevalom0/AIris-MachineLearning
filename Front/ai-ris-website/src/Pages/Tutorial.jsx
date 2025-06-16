@@ -10,11 +10,11 @@ function Tutorial() {
           <p className="lead">Aprende a utilizar nuestro adaptador universal para capturar imágenes del fondo del ojo de manera efectiva.</p>
           <br />
           <img 
-            src="/Images/Logo1.png" 
+            src={`${process.env.PUBLIC_URL}/Images/Logo1.png`} 
             alt="VitaVision AI-ris"
             className="img-1"
           />
-          <h2 className="text-center mb-4">VitaVision AI-ris</h2>
+          <h2 className="text-center mb-4">VitaVision AI-RIS</h2>
         </div>
 
       </section>

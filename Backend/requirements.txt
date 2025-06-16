@@ -8,3 +8,4 @@ fastapi-cors
 torch
 torchvision
 pillow
+python-multipart==0.0.20

@@ -71,7 +71,14 @@ export function Footer() {
         <div className="row mb-5">
           {/* About */}
           <div className="col-md-3 mb-4">
-            <h3 className="h5 mb-3 font-weight-bold">{currentContent.about}</h3>
+            <h3 className="h5 mb-3 font-weight-bold">
+              <img
+              src={"./Images/Logo1.png"}
+              alt="Logo"
+              className="App-logo me-2"
+            />
+            <span className="fw-bold fs-4">VitaVision</span>
+            </h3>
             <p className="text-gray-300 small">{currentContent.aboutText}</p>
             <div className="d-flex mt-3">
             <a href="https://www.instagram.com/a.arevalom01/" target="_blank" rel="noopener noreferrer" className="text-light me-3">

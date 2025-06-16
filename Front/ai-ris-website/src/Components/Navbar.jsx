@@ -38,6 +38,11 @@ function Navbar() {
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light">
           <Link to="/" className="navbar-brand d-flex align-items-center">
+            <img
+              src={"./Images/LogoBlack2.png"}
+              alt="Logo"
+              className="App-logo me-2"
+            />
             <span className="fw-bold fs-4">VitaVision</span>
           </Link>
           

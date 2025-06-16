@@ -7,7 +7,7 @@ const integrantes = [
   {
     nombre: "Ing. Valentina Salamanca",
     descripcion: "Creativa y proactiva, con fuerte compromiso hacia el trabajo en equipo e innovación.",
-    imagen: "/Images/VS.png",
+    imagen: "./Images/VS.png",
     linkedin: "http://linkedin.com/in/valentina-salamanca-bautista-072214320",
     github: "",
     instagram: "",
@@ -92,9 +92,9 @@ const asesores = [{
 const translations = {
   es: {
     teamTitle: "Nuestro Equipo",
-    teamSubtitle: "Conoce a las personas detrás de VitaVision AI-ris",
+    teamSubtitle: "Conoce al equipo interdisciplinario de VitaVision AI-ris",
     advisorsTitle: "Asesores",
-    membersTitle: "Equipo Principal",
+    membersTitle: "Equipo Experto",
   },
   en: {
     teamTitle: "Our Team",
