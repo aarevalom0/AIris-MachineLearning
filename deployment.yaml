@@ -80,70 +80,13 @@ resources:
       items:
       - key: startup-script
         value: |
-          #!/bin/bash
-          # Update system
-          sudo apt-get update
-          sudo apt-get install -y git curl
-
-          # Install Node.js and npm
-          curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-
-          # Clone repository
-          cd /home/ubuntu
+          sudo apt update && sudo apt upgrade -y
+          sudo apt install -y git curl
           git clone https://github.com/aarevalom0/AIris-MachineLearning.git
           cd AIris-MachineLearning/Front/ai-ris-website/
+          make
 
-          # Install dependencies
-          npm install
-
-          # Build React app for production
-          npm run build
-
-          # Install serve to host the built app
-          sudo npm install -g serve
-
-          # Create a service to run the React app
-          cat > /etc/systemd/system/airis-frontend.service << EOF
-          [Unit]
-          Description=AIris Frontend Service
-          After=network.target
-
-          [Service]
-          Type=simple
-          User=root
-          WorkingDirectory=/home/ubuntu/AIris-MachineLearning/ai-ris-website
-          ExecStart=/usr/bin/serve -s build -l 3000
-          Restart=always
-
-          [Install]
-          WantedBy=multi-user.target
-          EOF
-
-          # Enable and start the service
-          sudo systemctl enable airis-frontend
-          sudo systemctl start airis-frontend
           
-          # Install Nginx as reverse proxy
-          sudo apt install -y nginx
-
-          # Configure Nginx
-          cat > /etc/nginx/sites-available/default << EOF
-          server {
-              listen 80;
-              
-              location / {
-                  proxy_pass http://localhost:3000;
-                  proxy_http_version 1.1;
-                  proxy_set_header Upgrade \$http_upgrade;
-                  proxy_set_header Connection 'upgrade';
-                  proxy_set_header Host \$host;
-                  proxy_cache_bypass \$http_upgrade;
-              }
-          }
-          EOF
-
-          # Restart Nginx
 
 # Backend instance
 - type: compute.v1.instance

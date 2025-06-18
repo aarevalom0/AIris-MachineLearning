@@ -2,7 +2,7 @@ install:
 	sudo apt-get update
 	sudo apt-get install -y python3 python3-pip
 	sudo apt install -y libgl1 libglib2.0-0
-	git clone https://github.com/aarevalom0/AIris-MachineLearning.git
+	
 
 run:
 	cd AIris-MachineLearning/Backend
