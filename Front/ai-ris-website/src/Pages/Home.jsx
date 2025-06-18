@@ -1,4 +1,5 @@
 import { ArrowRight, Eye, Brain, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -84,10 +85,10 @@ const Home = () => {
       <section className="d-flex flex-column justify-content-center align-items-center min-vh-100 text-center px-3">
         <h1 className="display-3 fw-bold mb-4">{currentContent.hero.title}</h1>
         <p className="lead text-muted mb-5">{currentContent.hero.subtitle}</p>
-        <a href="/model" class="btn btn-dark btn-lg d-flex align-items-center"role="button" aria-disabled="true">
+        <Link to="/model" className="btn btn-dark btn-lg d-flex align-items-center" role="button" aria-disabled="true">
             {currentContent.hero.cta}
           <ArrowRight className="ms-2" size={20} />
-        </a>
+        </Link>
         <br />
         <img 
             src={`${process.env.PUBLIC_URL}/Images/LogoBlack1.png`} 
