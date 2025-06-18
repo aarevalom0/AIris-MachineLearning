@@ -5,7 +5,9 @@ run:
 	npm install
 	npm install react-router-dom
 	tmux new -s vitavision
-	npm run dev
+	npm run dev --port=8080
+build:
+	install run
 test:
 	npm run test
 clean:

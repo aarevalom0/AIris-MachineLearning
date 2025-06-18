@@ -2,14 +2,12 @@ install:
 	sudo apt-get update
 	sudo apt-get install -y python3 python3-pip
 	sudo apt install -y libgl1 libglib2.0-0
-	
-
 run:
-	cd AIris-MachineLearning/Backend
 	pip install -r requirements.txt
 	tmux new -s servidor
-	uvicorn APIRest:app --host 0.0.0.0 --port 8000 --reload
-
+	uvicorn APIRest:app --host 0.0.0.0 --port 8080 --reload
+build:
+	install run
 test:
 	python -m pytest -vv test_back.py
 clean:

@@ -1,0 +1,51 @@
+_format_version: "2.1"
+
+services:
+  - name: analysis_service
+    host: analysis_upstream
+    protocol: http
+    routes:
+      - name: analysis
+        paths:
+          - /upload
+          - /predecir/<str:name_file>
+        strip_path: false
+
+  - name: interface_service
+    host: interface_upstream
+    protocol: http
+    routes:
+      - name: interface
+        paths:
+          - /
+          - /model
+          - /tutorial
+          - /team
+          - /services
+          - /contact
+        strip_path: false
+    
+upstreams:
+  - name: analysis_upstream
+    targets:
+      - target: 10.128.0.82:8080
+        weight: 100
+      - target: 10.128.0.83:8080
+        weight: 100
+    healthchecks:
+      threshold: 20
+      active:
+        http_path: /health/
+        timeout: 5
+        healthy:
+          successes: 2
+          interval: 10
+        unhealthy:
+          timeout: 2
+          interval: 10
+          tcp_failures: 2
+
+  - name: interface_upstream
+    targets:
+      - target: 10.128.0.85:8080
+        weight: 100

@@ -10,7 +10,30 @@
 #    - airis-api-instance
 #    - airis-api-instance
 
+
+
 resources:
+# ===========================================================
+# firewall rules
+
+# firewall rule kong
+- name: api-gateway
+  type: compute.v1.firewall
+  properties:
+    network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+    priority: 1000
+    direction: INGRESS
+    sourceRanges: 
+    - 0.0.0.0/0
+    targetTags:
+    - api-gateway
+    allowed:
+    - IPProtocol: TCP
+      ports: 
+      - 8000
+      - 8080
+
+
 # Firewall rule for frontend
 - name: airis-frontend-firewall
   type: compute.v1.firewall
@@ -28,6 +51,8 @@ resources:
       - 80
       - 443
       - 3000
+      - 8080
+
 # Firewall rule for backend
 - name: airis-backend-firewall
   type: compute.v1.firewall
@@ -43,7 +68,8 @@ resources:
     - IPProtocol: TCP
       ports: 
       - 8000 
-
+      - 8080
+# ===========================================================
 # Router y NAT
 - name: cbd-router
   type: compute.v1.router
@@ -54,10 +80,51 @@ resources:
     - name: cbd-nat
       natIpAllocateOption: AUTO_ONLY
       sourceSubnetworkIpRangesToNat: ALL_SUBNETWORKS_ALL_IP_RANGES
-      
+
+
+# ===========================================================
+
+# Kong instance
+- name: kong-instance
+  type: compute.v1.instance
+  properties:
+    zone: us-central1-a
+    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-micro
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      networkIP: 10.128.0.81
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+    tags:
+      items: 
+      - api-gateway
+    metadata:
+      items:
+      - key: startup-script
+        value: |
+          #!/bin/bash
+          sudo mkdir /home/labs
+          cd /home/labs
+          sudo git clone https://github.com/aarevalom0/AIris-MachineLearning.git
+          cd AIris-MachineLearning
+          docker network create kong-net
+          docker run -d --name kong --network=kong-net --restart=always \
+          -v "$(pwd):/kong/declarative/" -e "KONG_DATABASE=off" \
+          -e "KONG_DECLARATIVE_CONFIG=/kong/declarative/kong.yaml" \
+          -p 8000:8000 kong/kong-gateway
+
+# ===========================================================
 # React Frontend instance
 - type: compute.v1.instance
-  name: airis-web-instance
+  name: airis-web-instance1
   properties:
     zone: us-central1-a
     machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-medium
@@ -70,6 +137,7 @@ resources:
         sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
     - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      networkIP: 10.128.0.85
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
@@ -80,17 +148,18 @@ resources:
       items:
       - key: startup-script
         value: |
+          #!/bin/bash
           sudo apt update && sudo apt upgrade -y
           sudo apt install -y git curl
           git clone https://github.com/aarevalom0/AIris-MachineLearning.git
           cd AIris-MachineLearning/Front/ai-ris-website/
-          make
-
+          make build
+  
           
 
 # Backend instance
 - type: compute.v1.instance
-  name: airis-api-instance
+  name: airis-api-instance1
   properties:
     zone: us-central1-a
     machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-medium
@@ -103,7 +172,7 @@ resources:
         sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
     - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-      networkIP: 10.128.0.60  # Fixed internal IP
+      networkIP: 10.128.0.82
     tags:
       items: 
       - airis-backend
@@ -112,37 +181,37 @@ resources:
       - key: startup-script
         value: |
           #!/bin/bash
-          # Update system
-          sudo apt-get update
-          sudo apt-get install -y git python3-pip python3-dev build-essential libgl1-mesa-glx
-
-          # Clone repository
-          cd /home/ubuntu/AIris-MachineLearning/Backend/
+          sudo apt update && sudo apt upgrade -y
+          sudo apt install -y git curl
           git clone https://github.com/aarevalom0/AIris-MachineLearning.git
-          cd AIris-MachineLearning/Backend/
+          cd AIris-MachineLearning/Backend
+          make build
 
-          # Install Python dependencies
-          pip3 install fastapi uvicorn
-          pip3 install numpy scikit-image scikit-learn opencv-python-headless joblib
-          pip3 install -r requirements.txt  # If requirements.txt exists
-
-          # Create a service file for FastAPI backend
-          cat > /etc/systemd/system/airis-backend.service << EOF
-          [Unit]
-          Description=AIris Backend Service
-          After=network.target
-
-          [Service]
-          Type=simple
-          User=root
-          WorkingDirectory=/home/ubuntu/AIris-MachineLearning/Backend
-          ExecStart=/usr/bin/python3 -m uvicorn APIRest:app --host 0.0.0.0 --port 8000
-          Restart=always
-
-          [Install]
-          WantedBy=multi-user.target
-          EOF
-
-          # Enable and start the service
-          sudo systemctl enable airis-backend
-          sudo systemctl start airis-backend
+- type: compute.v1.instance
+  name: airis-api-instance2
+  properties:
+    zone: us-central1-a
+    machineType: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/zones/us-central1-a/machineTypes/e2-medium
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
+      networkIP: 10.128.0.83
+    tags:
+      items: 
+      - airis-backend
+    metadata:
+      items:
+      - key: startup-script
+        value: |
+          #!/bin/bash
+          sudo apt update && sudo apt upgrade -y
+          sudo apt install -y git curl
+          git clone https://github.com/aarevalom0/AIris-MachineLearning.git
+          cd AIris-MachineLearning/Backend
+          make build
