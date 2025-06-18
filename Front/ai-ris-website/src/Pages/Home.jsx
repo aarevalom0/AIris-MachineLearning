@@ -155,10 +155,10 @@ const Home = () => {
         <div className="container text-center">
           <h2 className="display-6 fw-bold mb-4">Unete al Futuro del Cuidado Ocular</h2>
           <p className="lead mb-5">Experimenta el poder de la IA en la detección del glaucoma. Comienza tu viaje con VitaVision hoy.</p>
-          <a href="/model" class="btn btn-dark btn-lg align-items-center"role="button" aria-disabled="true">
+          <Link to="/model" className="btn btn-dark btn-lg align-items-center" role="button" aria-disabled="true">
             {currentContent.hero.cta}
           <ArrowRight className="ms-2" size={20} />
-        </a>
+        </Link>
         </div>
       </section>
 
