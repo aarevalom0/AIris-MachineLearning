@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/AIris-MachineLearning/static/css/main.27f5ed75.css",
-    "main.js": "/AIris-MachineLearning/static/js/main.645a52c2.js",
+    "main.js": "/AIris-MachineLearning/static/js/main.77d9ea5d.js",
     "static/js/453.fba53fdb.chunk.js": "/AIris-MachineLearning/static/js/453.fba53fdb.chunk.js",
     "index.html": "/AIris-MachineLearning/index.html",
     "main.27f5ed75.css.map": "/AIris-MachineLearning/static/css/main.27f5ed75.css.map",
-    "main.645a52c2.js.map": "/AIris-MachineLearning/static/js/main.645a52c2.js.map",
+    "main.77d9ea5d.js.map": "/AIris-MachineLearning/static/js/main.77d9ea5d.js.map",
     "453.fba53fdb.chunk.js.map": "/AIris-MachineLearning/static/js/453.fba53fdb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.27f5ed75.css",
-    "static/js/main.645a52c2.js"
+    "static/js/main.77d9ea5d.js"
   ]
 }
