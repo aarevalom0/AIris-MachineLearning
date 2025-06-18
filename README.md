@@ -14,6 +14,10 @@ It is an intelligent platform that integrates machine learning models with a mod
 </h3>
 
 ---
+Developed as part of an undergraduate thesis in **Biomedical Engineering** at **Universidad de los Andes**, Bogotá, Colombia (June 2025).
+
+---
+
 
 ## Project Structure
 
@@ -65,50 +69,23 @@ The architecture includes a frontend application built with React.js, a backend 
 ---
 ## Installation and Usage
 ### Prerequisites
-- Python 3.8 or higher
-- Node.js 14 or higher
-
+- cloud account (AWS, Azure, or Google Cloud)
 
 ### Installation
-1. Clone the repository:
+1. in Cloud shell, clone the repository:
    ```bash
    git clone https://github.com/aarevalom0/AIris-MachineLearning.git
    cd AIris-MachineLearning
    ```
+2. In editor file, edit the deployment.yaml file to change the `<id-proyecto>` in this file to your cloud project id.
 
-2. Set up the backend:
+3. Deploy the application using the deployment.yaml file:
    ```bash
-   cd Backend
-   pip install -r requirements.txt
+   gcloud deployment-manager deployments create VitaVision-deployment --config deployment.yaml
    ```
 
-3. Set up the frontend:
-   ```bash
-   cd Front
-   cd ai-ris-website
-   npm install
-   ```
-
-4. Set up the machine learning environment:
-   ```bash
-   cd Machine_Learning_Model
-   pip install -r requirements.txt
-   ```
-
-### Usage
-1. Start the backend server:
-   ```bash
-   cd Backend
-   uvicorn APIRest:app --reload
-   ```
-
-2. Start the frontend development server:
-   ```bash
-   cd Front
-   npm start
-   ```
-
-3. Access the application at `http://localhost:3000`.
+4. wait for the deployment to complete. This may take a few minutes.
+5. Once the deployment is complete, you can access the application using the URL provided for the ip address of the `kong-instance`.
 
 
 ## Thesis Project Context

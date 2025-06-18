@@ -11,6 +11,10 @@ This directory contains the backend component of the AIRIS platform, responsible
 </h3>
 
 ---
+Developed as part of an undergraduate thesis in **Biomedical Engineering** at **Universidad de los Andes**, Bogotá, Colombia (June 2025).
+
+---
+
 ## Features
 - Data processing and analysis pipelines
 - Model deployment and management
