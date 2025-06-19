@@ -93,3 +93,5 @@ The architecture includes a frontend application built with React.js, a backend 
 This project was developed as part of the undergraduate thesis for the Biomedical Engineering degree at Universidad de los Andes, Bogotá, Colombia, and was formally presented in 2025. It forms a key component of the research initiative VitaVision, which proposes an accessible, low-cost solution for early glaucoma screening by combining artificial intelligence with portable fundus imaging using smartphone-based optical support.
 
 The code, datasets, and models presented in this repository form a core component of the research and technical validation carried out during the thesis process. All documentation, methodology, and results are aligned with the objectives of the VitaVision thesis project, which integrates biomedical engineering, machine learning, and digital health innovation.
+
+
