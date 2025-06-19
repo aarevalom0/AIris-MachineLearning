@@ -87,6 +87,13 @@ The architecture includes a frontend application built with React.js, a backend 
 4. wait for the deployment to complete. This may take a few minutes.
 5. Once the deployment is complete, you can access the application using the URL provided for the ip address of the `kong-instance`.
 
+## 📜 License
+
+This project is protected by copyright and has a custom license. **Commercial use, redistribution, modification, or copying is not permitted without express permission.**
+
+All content is part of the undergraduate thesis **VitaVision** presented at the Universidad de los Andes, Colombia, in June 2025.
+
+See the [LICENSE](./LICENSE) file for more details.
 
 ## Thesis Project Context
 
